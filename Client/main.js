@@ -205,6 +205,20 @@ function cancelName() {
     channelNameContainer.style.display = "none";
 }
 
+function openInfo() {
+    var infoContainer = document.getElementById('infoScreenContainer');
+    if(infoContainer.style.display === "flex") {
+        infoContainer.style.display = "none";
+    } else {
+        infoContainer.style.display = "flex";
+    }
+}
+
+function closeInfo() {
+    var infoContainer = document.getElementById('infoScreenContainer');
+    infoContainer.style.display = "none";
+}
+
 function leaveServer() {
     webSocket.send(JSON.stringify({
         "type": "leaveServer",

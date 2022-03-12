@@ -66,5 +66,21 @@
             </div>
         </div>
     </div>
+    <div class="info-screen-container" id="infoScreenContainer">
+        <div class="info-screen">
+            <div class="info-screen-text">
+                <div class="info-screen-title">TempChat</div>
+                <div class="info-screen-subtitle">A simple chat application made in Javascript. This app requires NO account whatsoever, and allows for very easy sharing of servers with absolutely no message history. This application is FOSS (<a class="info-screen-link" href="https://github.com/Glitch752/Simple-chat">Github</a>). Finally, this chat app never stores any messages sent. This means when joining a server, you can't see the past messages, but the messages are sent from the server directly to the clients and never stored along the way.</a></div>
+                <div class="info-screen-subtitle">In order to send messages, you must set your name. To set your name, you can simply click on the name field in the top left corner.</div>
+                <div class="info-screen-subtitle">When starting, you're presented with 3 options: join, join public, or create server. The join button joins a server with the code you put into the input field, the join public button simply joins the public server that anyone has access to, and the create server button creates a quick, disposable server. This server is deleted when everyone leaves.</div>
+                <div class="info-screen-subtitle">You can see your permissions in the server in the top right corner. If it says you're the owner, you can create channels and edit permissions. If it says you're a member with channel edit access, you can add and remove channels, but you can't change user permissions. Finally, if it says you're just a member of the server, you can't edit permissions or channels.</div>
+                <div class="info-screen-subtitle">As owner, if you want to change someone's permissions, you can simply click their name and change the permissions there.</div>
+                <div class="info-screen-subtitle">If you want to leave a server, you can click the leave button in the bottom left corner.</div>
+                <div class="info-screen-subtitle">That's all! Have fun chatting!</div>
+            </div>
+            <button onclick="closeInfo()" class="info-screen-button">Close</button>
+        </div>
+    </div>
+    <svg class="info-icon" onclick="openInfo()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"/></svg>
 </body>
 </html>
