@@ -1,0 +1,495 @@
+:root {
+    --font-size: 1.5rem;
+    --small-font-size: 1rem;
+    --large-font-size: 2rem;
+    --channel-width: 15rem;
+    --members-width: 15rem;
+    --topbar-height: 3rem;
+
+    --font-color-primary: #fff;
+    --font-color-secondary: #eeeeee;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    line-height: 1.5;
+    background-color: #3c3e4b;
+    margin: 0;
+    overflow: hidden;
+}
+
+.channels {
+    width: var(--channel-width);
+    height: 100vh;
+    background-color: #272830;
+    padding-bottom: 5rem;
+}
+.server-code-display {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: #272830;
+}
+.server-join-code {
+    color: var(--font-color-primary);
+    font-size: var(--font-size);
+    margin: 0.5rem;
+}
+.leave-server-button {
+    position: absolute;
+    bottom: 0;
+    width: var(--channel-width);
+    background-color: #2e3253;
+    color: var(--font-color-primary);
+    font-size: var(--font-size);
+    text-align: center;
+    cursor: pointer;
+}
+.channel {
+    width: calc(100% - 1rem);
+    padding: 0.5rem;
+}
+.selected-channel {
+    background-color: #3c3e4b;
+}
+.channel-name {
+    font-size: var(--font-size);
+    font-weight: bold;
+    color: var(--font-color-secondary);
+    display: inline;
+    margin-left: 2rem;
+}
+.channel > svg {
+    width: var(--font-size);
+    height: var(--font-size);
+    fill: var(--font-color-secondary);
+    display: inline;
+}
+.channels-name {
+    font-size: var(--font-size);
+    font-weight: bold;
+    color: var(--font-color-primary);
+    padding: 0.5rem;
+    margin-bottom: -1rem;
+    height: var(--topbar-height);
+    position: relative;
+    width: calc(100% - 1rem);
+}
+.add-channel {
+    position: absolute;
+    right: 0.5rem;
+    fill: var(--font-color-primary);
+    cursor: pointer;
+    width: var(--font-size);
+    height: var(--font-size);
+    top: 0.75rem;
+}
+
+.chat {
+    width: calc(100% - var(--channel-width) - var(--members-width));
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: var(--members-width);
+}
+.top-bar {
+    width: 100%;
+    height: var(--topbar-height);
+    background-color: #272830;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.name {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: var(--font-size);
+    color: var(--font-color-primary);
+    padding: 0.5rem;
+    width: 20rem;
+    -webkit-font-smoothing: antialiased;
+    transition: color 0.2s ease-in-out;
+}
+.shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate(0, 0);
+    backface-visibility: hidden;
+    color: red !important;
+}
+
+.name::placeholder {
+    transition: color 0.2s ease-in-out;
+}
+
+.shake::placeholder {
+    color: red;
+    opacity: 1;
+}
+.shake:-ms-input-placeholder {
+    color: red;
+}
+.shake::-ms-input-placeholder {
+    color: red;
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate(-1px, 2px);
+    }
+    
+    20%, 80% {
+      transform: translate(2px, -4px);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate(-4px, 4px);
+    }
+  
+    40%, 60% {
+      transform: translate(4px, -1px);
+    }
+}
+
+.server-permissions {
+    position: absolute;
+    right: 0;
+}
+.server-permissions-name {
+    font-size: var(--font-size);
+    font-weight: bold;
+    color: var(--font-color-secondary);
+    display: inline-block;
+    padding: 0.5rem;
+    margin-bottom: -1rem;
+    height: var(--topbar-height);
+}
+.server-permissions-icon {
+    width: var(--font-size);
+    height: var(--font-size);
+    fill: var(--font-color-secondary);
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.server-owner-icon {
+    fill: yellow;
+}
+
+.send-message {
+    width: 100%;
+    background-color: #272830;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.message {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: var(--font-size);
+    color: var(--font-color-primary);
+    padding: 0.5rem;
+    width: calc(100% - var(--font-size) - 1.5rem);
+    resize: none;
+    overflow: hidden;
+}
+.send-message-icon {
+    width: var(--font-size);
+    height: var(--font-size);
+    fill: var(--font-color-primary);
+    display: inline;
+    position: absolute;
+    right: 1rem;
+}
+
+.messages {
+    height: calc(100% - var(--topbar-height) - var(--message-height));
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.message-container {
+    background-color: #30313a;
+    color: #fff;
+    width: 100%;
+    padding: 1rem;
+    padding-bottom: 1.5rem;
+    border-top: 1px solid #3c3e4b;
+}
+.message-user {
+    font-size: var(--small-font-size);
+    font-weight: bold;
+    color: var(--font-color-secondary);
+    display: inline;
+    margin-right: 1rem;
+}
+.message-text {
+    font-size: var(--font-size);
+    color: var(--font-color-primary);
+}
+
+.join-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #00000077;
+}
+.join {
+    width: 30rem;
+    background-color: #272830;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.join-text {
+    font-size: var(--font-size);
+    color: var(--font-color-primary);
+}
+.server-code {
+    font-size: var(--font-size);
+    color: var(--font-color-primary);
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #272830;
+}
+.join-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.join-button {
+    background-color: #4550a1;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+.join-button:hover {
+    background-color: #5963ad;
+}
+.join-button:active {
+    background-color: #3c3e4b;
+}
+
+
+.channels {
+    width: var(--channel-width);
+    height: 100vh;
+    background-color: #272830;
+    padding-bottom: var(--message-height);
+}
+.server-code-display {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: #272830;
+}
+.server-join-code {
+    color: var(--font-color-primary);
+    font-size: var(--font-size);
+    margin: 0.5rem;
+}
+.leave-server-button {
+    position: absolute;
+    bottom: 0;
+    width: var(--channel-width);
+    background-color: #2e3253;
+    color: var(--font-color-primary);
+    font-size: var(--font-size);
+    text-align: center;
+    cursor: pointer;
+}
+
+.members {
+    width: var(--members-width);
+    height: 100vh;
+    background-color: #272830;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.member {
+    width: calc(100% - 1rem);
+    padding: 0.5rem;
+}
+.member-name {
+    font-size: var(--small-font-size);
+    /* add elipsis if name is too long */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-weight: bold;
+    color: var(--font-color-secondary);
+    display: inline-block;
+    margin-left: 1rem;
+
+    width: calc(100% - var(--font-size) - 0.5rem);
+}
+.member > svg {
+    width: var(--font-size);
+    height: var(--font-size);
+    fill: var(--font-color-secondary);
+    display: inline;
+}
+.members-name {
+    font-size: var(--font-size);
+    font-weight: bold;
+    color: var(--font-color-primary);
+    display: inline-block;
+    padding: 0.5rem;
+    margin-bottom: -1rem;
+    height: var(--topbar-height);
+}
+
+.member-owner-icon {
+    fill: yellow;
+    margin-left: 0.5rem;
+}
+
+.permissions-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #00000077;
+    display: none;
+}
+.permissions {
+    width: 30rem;
+    background-color: #272830;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.permissions-text {
+    font-size: var(--font-size);
+    color: var(--font-color-primary);
+}
+.permission {
+    display: flex;
+    flex-direction: row;
+    font-size: var(--small-font-size);
+}
+.permissions-confirm {
+    background-color: #4550a1;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+.permissions-confirm:hover {
+    background-color: #5963ad;
+}
+.permissions-confirm:active {
+    background-color: #3c3e4b;
+}
+
+.select-channel-name-container {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #00000077;
+    display: none;
+}
+.select-channel-name {
+    width: 30rem;
+    background-color: #272830;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+.select-channel-name-text {
+    font-size: var(--font-size);
+    color: var(--font-color-primary);
+}
+.select-channel-name-input {
+    font-size: var(--font-size);
+    color: var(--font-color-primary);
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #272830;
+}
+.select-channel-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(100% - 1rem);
+    margin: 0.5rem;
+}
+.select-channel-name-button {
+    background-color: #4550a1;
+    border-radius: 1rem;
+    margin: 0.5rem;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+.select-channel-name-button:hover {
+    background-color: #5963ad;
+}
+.select-channel-name-button:active {
+    background-color: #3c3e4b;
+}
