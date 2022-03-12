@@ -50,6 +50,8 @@ body {
 .channel {
     width: calc(100% - 1rem);
     padding: 0.5rem;
+    white-space: nowrap;
+    position: relative;
 }
 .selected-channel {
     background-color: #3c3e4b;
@@ -58,8 +60,22 @@ body {
     font-size: var(--font-size);
     font-weight: bold;
     color: var(--font-color-secondary);
-    display: inline;
+    display: inline-block;
     margin-left: 2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: calc(var(--channel-width) - 5rem);
+}
+.channel-remove {
+    position: absolute;
+    right: 0.5rem;
+    fill: red !important;
+    top: 1rem;
+    cursor: pointer;
+    display: none !important;
+}
+.channel:hover > .channel-remove {
+    display: block !important;
 }
 .channel > svg {
     width: var(--font-size);

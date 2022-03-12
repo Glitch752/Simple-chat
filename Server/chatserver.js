@@ -101,11 +101,20 @@ wss.on('connection', function connection(ws) {
                 name: messageData.channelName,
             });
 
-            var server = servers[messageData.serverCode];
             for(var i = 0; i < server.clients.length; i++) {
                 server.clients[i].ws.send(JSON.stringify({
                     type: 'channelCreated',
                     channelName: messageData.channelName,
+                }));
+            }
+        } else if (messageData.type === 'removeChannel') {
+            var server = servers[messageData.serverCode];
+            server.channels.splice(messageData.channelIndex, 1);
+
+            for(var i = 0; i < server.clients.length; i++) {
+                server.clients[i].ws.send(JSON.stringify({
+                    type: 'channelRemoved',
+                    channelIndex: messageData.channelIndex,
                 }));
             }
         } else if (messageData.type === 'createServer') {
