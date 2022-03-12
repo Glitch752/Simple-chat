@@ -228,18 +228,15 @@ body {
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
 }
 .message-container {
     background-color: #30313a;
     color: #fff;
-    width: 100%;
+    width: calc(100% - 2rem);
     padding: 1rem;
     padding-bottom: 1.5rem;
     border-top: 1px solid #3c3e4b;
+    display: inline-block;
 }
 .message-user {
     font-size: var(--small-font-size);
@@ -585,4 +582,21 @@ body {
 }
 .info-icon:hover {
     fill: #7272d4;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #212031; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 100vh;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }

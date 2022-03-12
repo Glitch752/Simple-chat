@@ -317,6 +317,7 @@ function updateMessages() {
             <div class="message-text">${message.message}</div>
         </div>`;
     }
+    messages.scrollTop = messages.scrollHeight;
 }
 
 var editingPermissionsId = 0;
