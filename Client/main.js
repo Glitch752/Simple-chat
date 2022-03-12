@@ -1,4 +1,4 @@
-var webSocket = new WebSocket("ws://localhost:5050");
+var webSocket = new WebSocket("ws://" + window.location.host + "/ws");
 
 webSocket.onopen = function(event) {
     console.log("Connection established!");
