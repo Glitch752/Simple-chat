@@ -265,7 +265,7 @@ window.onload = function() {
 
     var nameInput = document.getElementById('nameInput');
 
-    nameInput.addEventListener("change", function (e) {
+    nameInput.addEventListener("keyup", function (e) {
         webSocket.send(JSON.stringify({
             "type": "updateName",
             "name": nameInput.value,

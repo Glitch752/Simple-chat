@@ -1,3 +1,3 @@
 # Simple-chat
 
-This is a very simple chat application I made that alows for chatting using no account.
+This is a very simple chat application I made that allows for chatting using no account.
