@@ -1,4 +1,5 @@
-var webSocket = new WebSocket((window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/ws/");
+// var webSocket = new WebSocket((window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/ws/");
+var webSocket = new WebSocket((window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host.split(":")[0] + ":5050");
 
 webSocket.onopen = function(event) {
     console.log("Connection established!");
@@ -212,6 +213,16 @@ function openInfo() {
     } else {
         infoContainer.style.display = "flex";
     }
+}
+
+function toggleChannels() {
+    var channels = document.getElementById("channels");
+    channels.classList.toggle("open");
+}
+
+function toggleUsers() {
+    var users = document.getElementById("members");
+    users.classList.toggle("open");
 }
 
 function closeInfo() {
