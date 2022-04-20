@@ -1,5 +1,5 @@
-var webSocket = new WebSocket((window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/ws/");
-// var webSocket = new WebSocket((window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host.split(":")[0] + ":5050");
+// var webSocket = new WebSocket((window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/ws/");
+var webSocket = new WebSocket((window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host.split(":")[0] + ":5050");
 
 webSocket.onopen = function(event) {
     console.log("Connection established!");
@@ -134,11 +134,11 @@ function updateChannels() {
     channelSelect.innerHTML = `
     <div class="channels-name">
         Channels
-        ${!hasCreatePermissions ? '' : `<svg onclick="addChannel()" class="add-channel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"/></svg>`}
+        ${!hasCreatePermissions ? '' : `<svg tabindex="1" onclick="addChannel()" class="add-channel" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"/></svg>`}
     </div>`;
     for (var i = 0; i < channels.length; i++) {
         channelSelect.innerHTML += `
-        <div class="channel ${i === selectedChannel ? 'selected-channel' : ''}" onclick="selectChannel(${i})">
+        <div tabindex="1" class="channel ${i === selectedChannel ? 'selected-channel' : ''}" onclick="selectChannel(${i})">
             <!-- arrow right --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/></svg>
             <span class="channel-name">${channels[i].name}</span>
             ${!hasCreatePermissions ? '' : `<svg onclick="removeChannel(${i})" class="channel-remove" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M376.6 427.5c11.31 13.58 9.484 33.75-4.094 45.06c-5.984 4.984-13.25 7.422-20.47 7.422c-9.172 0-18.27-3.922-24.59-11.52L192 305.1l-135.4 162.5c-6.328 7.594-15.42 11.52-24.59 11.52c-7.219 0-14.48-2.438-20.47-7.422c-13.58-11.31-15.41-31.48-4.094-45.06l142.9-171.5L7.422 84.5C-3.891 70.92-2.063 50.75 11.52 39.44c13.56-11.34 33.73-9.516 45.06 4.094L192 206l135.4-162.5c11.3-13.58 31.48-15.42 45.06-4.094c13.58 11.31 15.41 31.48 4.094 45.06l-142.9 171.5L376.6 427.5z"/></svg>`}
@@ -146,7 +146,7 @@ function updateChannels() {
     }
     channelSelect.innerHTML += `<div class="server-code-display" id="serverCodeDisplay">
         <div class="server-join-code">Join code: ${currentServerCode}</div>
-        <div class="leave-server-button" onclick="leaveServer()">Leave server</div>
+        <div tabindex="1" class="leave-server-button" onclick="leaveServer()">Leave server</div>
     </div>`;
 }
 
@@ -156,7 +156,7 @@ function updateMembers() {
     for (var i = 0; i < members.length; i++) {
         membersElem.innerHTML += `
         <div class="member">
-            <div class="member-name">${members[i].name}${members[i].permissions.isOwner ? '<svg class="server-permissions-icon member-owner-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M576 136c0 22.09-17.91 40-40 40c-.248 0-.4551-.1266-.7031-.1305l-50.52 277.9C482 468.9 468.8 480 453.3 480H122.7c-15.46 0-28.72-11.06-31.48-26.27L40.71 175.9C40.46 175.9 40.25 176 39.1 176c-22.09 0-40-17.91-40-40S17.91 96 39.1 96s40 17.91 40 40c0 8.998-3.521 16.89-8.537 23.57l89.63 71.7c15.91 12.73 39.5 7.544 48.61-10.68l57.6-115.2C255.1 98.34 247.1 86.34 247.1 72C247.1 49.91 265.9 32 288 32s39.1 17.91 39.1 40c0 14.34-7.963 26.34-19.3 33.4l57.6 115.2c9.111 18.22 32.71 23.4 48.61 10.68l89.63-71.7C499.5 152.9 496 144.1 496 136C496 113.9 513.9 96 536 96S576 113.9 576 136z"/></svg>' : ''}</div>
+            <div tabindex="1" class="member-name">${members[i].name}${members[i].permissions.isOwner ? '<svg class="server-permissions-icon member-owner-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M576 136c0 22.09-17.91 40-40 40c-.248 0-.4551-.1266-.7031-.1305l-50.52 277.9C482 468.9 468.8 480 453.3 480H122.7c-15.46 0-28.72-11.06-31.48-26.27L40.71 175.9C40.46 175.9 40.25 176 39.1 176c-22.09 0-40-17.91-40-40S17.91 96 39.1 96s40 17.91 40 40c0 8.998-3.521 16.89-8.537 23.57l89.63 71.7c15.91 12.73 39.5 7.544 48.61-10.68l57.6-115.2C255.1 98.34 247.1 86.34 247.1 72C247.1 49.91 265.9 32 288 32s39.1 17.91 39.1 40c0 14.34-7.963 26.34-19.3 33.4l57.6 115.2c9.111 18.22 32.71 23.4 48.61 10.68l89.63-71.7C499.5 152.9 496 144.1 496 136C496 113.9 513.9 96 536 96S576 113.9 576 136z"/></svg>' : ''}</div>
         </div>`
     }
 }
@@ -324,7 +324,7 @@ function updateMessages() {
         var message = channels[selectedChannel].messages[i];
         messages.innerHTML += `
         <div class="message-container">
-            ${message.name === false ? `` : `<div class="message-user" onclick="changePermissions(${message.userID})">${message.name}</div>`}
+            ${message.name === false ? `` : `<div tabindex="2" class="message-user" onclick="changePermissions(${message.userID})">${message.name}</div>`}
             <div class="message-text">${message.message}</div>
         </div>`;
     }

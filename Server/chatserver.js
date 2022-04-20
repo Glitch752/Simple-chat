@@ -68,6 +68,7 @@ wss.on('connection', function connection(ws) {
             }
         } else if (messageData.type === 'updateName') {
             var server = servers[messageData.serverCode];
+            if (!server) return
             for(var i = 0; i < server.clients.length; i++) {
                 if(server.clients[i].ws === ws) {
                     server.clients[i].name = messageData.name;

@@ -8,6 +8,8 @@
 
     --font-color-primary: #fff;
     --font-color-secondary: #eeeeee;
+
+    --focus-color: #aa2727;
 }
 
 * {
@@ -64,6 +66,9 @@ body {
     padding: 0.5rem;
     white-space: nowrap;
     position: relative;
+}
+.channel:focus-visible {
+    outline: 0.2rem solid var(--focus-color);
 }
 .selected-channel {
     background-color: #3c3e4b;
@@ -257,6 +262,9 @@ body {
     display: inline;
     margin-right: 1rem;
 }
+.message-user:focus-visible {
+    outline: 0.2rem solid var(--focus-color);
+}
 .message-text {
     font-size: var(--font-size);
     color: var(--font-color-primary);
@@ -320,13 +328,15 @@ body {
     font-size: 1.5rem;
     padding: 1rem;
 }
+.join-button:focus-visible {
+    outline: 0.2rem solid var(--focus-color);
+}
 .join-button:hover {
     background-color: #5963ad;
 }
 .join-button:active {
     background-color: #3c3e4b;
 }
-
 
 .channels {
     width: var(--channel-width);
@@ -356,6 +366,9 @@ body {
     text-align: center;
     cursor: pointer;
 }
+.leave-server-button:focus-visible {
+    outline: 0.2rem solid var(--focus-color);
+}
 
 .members {
     width: var(--members-width);
@@ -382,6 +395,9 @@ body {
     margin-left: 1rem;
 
     width: calc(100% - var(--font-size) - 0.5rem);
+}
+.member-name:focus-visible {
+    outline: 0.2rem solid var(--focus-color);
 }
 .member > svg {
     width: var(--font-size);
